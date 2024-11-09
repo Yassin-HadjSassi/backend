@@ -101,6 +101,33 @@ class ArticleController extends Controller
         }      
     }
 
+    public function articlesPaginate()
+    {
+        try {
+            $perPage = request()->input('pageSize', 2);
+            // Récupère la valeur dynamique pour la pagination
+
+            // Récupère le filtre par désignation depuis la requête
+            $filterDesignation = request()->input('filtre');
+            // Construction de la requête
+            $query = Article::with('scategories');
+            // Applique le filtre sur la désignation s'il est fourni
+            if ($filterDesignation) {
+                $query->where('designation', 'like', '%' . $filterDesignation . '%');
+            }
+
+            $articles = $query->paginate($perPage);
+            // Retourne le résultat en format JSON API
+            return response()->json([
+                'products' => $articles->items(), // Les articles paginés
+                'totalPages' => $articles->lastPage(), // Le nombre de pages
+            ]);
+        } catch (\Exception $e) {
+        return response()->json("Selection impossible {$e->getMessage()}");
+        }
+    }
+
+    
     
 
 }

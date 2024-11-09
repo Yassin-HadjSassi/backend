@@ -13,7 +13,7 @@
     "env": { 
         "APP_ENV": "production", 
         "APP_DEBUG": "true", 
-        "APP_URL": "https://vercel.com/new/yassins-projects-ec722a08", 
+        "APP_URL": "https://vercel.com/yassins-projects-ec722a08", 
         "APP_KEY": "base64:zdODmM+wdgMhVfQJ9blhvyMw+9vx25kUYXgjsQnq9uI=", 
  
         "APP_CONFIG_CACHE": "/tmp/config.php", 
